@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register — ShopNest</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="index.html" class="logo">Shop<span>Nest</span></a>
+        <nav class="nav-main">
+          <a href="index.html">Home</a>
+          <a href="products.html">Catalog</a>
+          <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+        </nav>
+        <div class="header-actions" id="auth-slot"></div>
+      </div>
+    </header>
+    <main>
+      <div class="form-panel">
+        <h1>Create your account</h1>
+        <p class="sub">Takes under a minute. We only store details in your browser for this demo.</p>
+        <div id="reg-error" class="alert alert-error hidden" role="alert"></div>
+        <div id="reg-success" class="alert alert-success hidden" role="status"></div>
+        <form id="register-form" novalidate>
+          <div class="field">
+            <label for="reg-name">Full name</label>
+            <input id="reg-name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="reg-email">Email</label>
+            <input id="reg-email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="reg-pass">Password</label>
+            <input id="reg-pass" type="password" autocomplete="new-password" required />
+            <small>At least 8 characters.</small>
+          </div>
+          <div class="field">
+            <label for="reg-pass2">Confirm password</label>
+            <input id="reg-pass2" type="password" autocomplete="new-password" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+        <p style="margin-top: 1.25rem; font-size: 0.9rem; color: var(--muted)">
+          Already have an account? <a href="login.html">Log in</a>
+        </p>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div><strong>ShopNest</strong><br />Demo QA build</div>
+        <div>Help<br /><a href="#">FAQs</a></div>
+        <div>Legal<br /><a href="#">Privacy</a></div>
+      </div>
+    </footer>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/register.js"></script>
+  </body>
+</html>

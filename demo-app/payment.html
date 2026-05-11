@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment — ShopNest</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="index.html" class="logo">Shop<span>Nest</span></a>
+        <nav class="nav-main">
+          <a href="index.html">Home</a>
+          <a href="products.html">Catalog</a>
+          <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+        </nav>
+        <div class="header-actions" id="auth-slot"></div>
+      </div>
+    </header>
+    <main>
+      <div class="steps">
+        <span class="on">1. Cart</span>
+        <span class="on">2. Details</span>
+        <span class="on">3. Payment</span>
+        <span>4. Confirmation</span>
+      </div>
+      <h1 style="margin-top: 0">Payment</h1>
+      <p style="color: var(--muted)">
+        Demo gateway — no money moves. For success, avoid the digit sequence <strong>0000</strong> in the card
+        number (that path is intentionally brittle for defect logging).
+      </p>
+      <div class="form-panel" style="max-width: 480px; margin: 0">
+        <div class="summary-row summary-total" style="border: none; margin-bottom: 1rem">
+          <span>Order subtotal</span>
+          <span>$<span id="pay-subtotal">0.00</span></span>
+        </div>
+        <div id="pay-error" class="alert alert-error hidden" role="alert"></div>
+        <form id="pay-form" novalidate>
+          <div class="field">
+            <label for="card-name">Name on card</label>
+            <input id="card-name" type="text" required autocomplete="cc-name" />
+          </div>
+          <div class="field">
+            <label for="card-num">Card number</label>
+            <input id="card-num" type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" required />
+          </div>
+          <div class="field">
+            <label for="card-exp">Expiry (MM/YY)</label>
+            <input id="card-exp" type="text" placeholder="12/30" required />
+          </div>
+          <div class="field">
+            <label for="card-cvv">CVV</label>
+            <input id="card-cvv" type="password" maxlength="4" placeholder="123" required />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Pay now</button>
+        </form>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div><strong>ShopNest</strong><br />Demo QA build</div>
+        <div>Help<br /><a href="#">FAQs</a></div>
+        <div>Legal<br /><a href="#">Privacy</a></div>
+      </div>
+    </footer>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/payment.js"></script>
+  </body>
+</html>

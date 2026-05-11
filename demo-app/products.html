@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catalog — ShopNest</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="index.html" class="logo">Shop<span>Nest</span></a>
+        <nav class="nav-main">
+          <a href="index.html">Home</a>
+          <a href="products.html" class="active">Catalog</a>
+          <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+        </nav>
+        <form class="search-bar" id="catalog-search" action="products.html" method="get">
+          <input type="search" name="q" id="search-q" placeholder="Search products…" aria-label="Search" />
+          <button type="submit">Search</button>
+        </form>
+        <div class="header-actions" id="auth-slot"></div>
+      </div>
+    </header>
+    <main>
+      <h1 style="margin-top: 0">Product catalog</h1>
+      <p id="search-hint" style="color: var(--muted)"></p>
+      <div class="grid-products" id="product-grid"></div>
+      <div id="no-results" class="empty-state hidden">No products match that search. Try another keyword.</div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div><strong>ShopNest</strong><br />Demo QA build</div>
+        <div>Help<br /><a href="#">FAQs</a></div>
+        <div>Legal<br /><a href="#">Privacy</a></div>
+      </div>
+    </footer>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      function renderList(query) {
+        const products = window.SHOP_PRODUCTS || [];
+        const list = window.ShopNest.filterProducts(products, query);
+        const grid = document.getElementById("product-grid");
+        const empty = document.getElementById("no-results");
+        const hint = document.getElementById("search-hint");
+        grid.innerHTML = "";
+        if (query) hint.textContent = 'Results for: "' + query + '" (' + list.length + " items)";
+        else hint.textContent = "Showing all " + products.length + " demo products.";
+        if (!list.length) {
+          empty.classList.remove("hidden");
+          return;
+        }
+        empty.classList.add("hidden");
+        list.forEach((p) => {
+          const el = document.createElement("article");
+          el.className = "card-product";
+          el.innerHTML =
+            '<div class="thumb" aria-hidden="true">' +
+            p.emoji +
+            "</div>" +
+            '<div class="body"><h3>' +
+            p.name +
+            '</h3><div class="meta">' +
+            p.category +
+            " · " +
+            p.sku +
+            '</div><div class="price">$' +
+            p.price.toFixed(2) +
+            '</div><label class="field" style="margin:0.5rem 0"><span class="sr-only">Quantity</span><input type="number" min="1" max="99" value="1" aria-label="Quantity" data-qty="' +
+            p.id +
+            '" /></label><button type="button" class="btn btn-primary btn-block" data-add="' +
+            p.id +
+            '">Add to cart</button></div>';
+          grid.appendChild(el);
+        });
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const q = params.get("q") || "";
+        document.getElementById("search-q").value = q;
+        renderList(q);
+        document.getElementById("product-grid").addEventListener("click", (e) => {
+          const btn = e.target.closest("[data-add]");
+          if (!btn) return;
+          const id = btn.getAttribute("data-add");
+          const inp = document.querySelector('input[data-qty="' + id + '"]');
+          const qty = inp ? parseInt(inp.value, 10) : 1;
+          window.ShopNest.addToCart(id, qty);
+          btn.textContent = "Added ✓";
+          setTimeout(() => (btn.textContent = "Add to cart"), 1200);
+        });
+      });
+    </script>
+    <style>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+    </style>
+  </body>
+</html>

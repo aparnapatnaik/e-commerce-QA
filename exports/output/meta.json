@@ -1,0 +1,15 @@
+{
+  "qa_owner": "Aparna Patnaik",
+  "as_of": "2025-05-10",
+  "execution_window": {
+    "start": "2025-05-01",
+    "end": "2025-05-09"
+  },
+  "test_case_count": 76,
+  "defect_count": 10,
+  "outputs": [
+    "C:\\Users\\user\\Desktop\\E-commerce\\exports\\output\\ShopNest_QA_Portfolio.xlsx",
+    "C:\\Users\\user\\Desktop\\E-commerce\\exports\\output\\ShopNest_QA_Portfolio.docx",
+    "C:\\Users\\user\\Desktop\\E-commerce\\exports\\output\\ShopNest_QA_Print.html"
+  ]
+}
