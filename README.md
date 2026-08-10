@@ -104,11 +104,6 @@ No real payments, no server, no database. Good for **manual test design, documen
 
 ---
 
-## Resume bullets (short — edit to match how you talk)
-
-- 76 manual test cases (black-box) across auth, catalog, search, cart, checkout, payment, order confirmation for a static e-commerce demo.  
-- SRS, test plan, RTM, severity/priority notes, smoke/sanity/regression, Jira-style defect write-ups.  
-- Excel + Word export pipeline (Python) for interview-ready artefacts.
 
 ---
 
