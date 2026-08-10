@@ -45,7 +45,7 @@ E-commerce/
 ├── exports/
 │   ├── build_portfolio.py  ← builds xlsx / docx / print HTML
 │   └── output/             ← generated workbook + Word + PDF-friendly HTML
-           ← add your own PNGs for the GitHub readme (optional)
+
 ```
 
 ---
