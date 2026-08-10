@@ -45,7 +45,7 @@ E-commerce/
 ├── exports/
 │   ├── build_portfolio.py  ← builds xlsx / docx / print HTML
 │   └── output/             ← generated workbook + Word + PDF-friendly HTML
-└── screenshots/            ← add your own PNGs for the GitHub readme (optional)
+           ← add your own PNGs for the GitHub readme (optional)
 ```
 
 ---
@@ -94,11 +94,7 @@ Outputs land in `exports/output/`:
 
 I left `screenshots/` empty on purpose. Drop 3–4 images there (home, cart, Excel cover, confirmation), then link them in this README, for example:
 
-```markdown
-![Catalog](screenshots/catalog.png)
-```
 
-See `screenshots/README.txt` for ideas.
 
 ---
 
@@ -118,4 +114,4 @@ No real payments, no server, no database. Good for **manual test design, documen
 
 ## License
 
-No license file yet — default is “all rights reserved.” If you fork this for a job application, a one-line note in the README is enough unless you want MIT / CC-BY.
+No license file yet — default is “all rights reserved.” 
